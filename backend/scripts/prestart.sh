@@ -6,8 +6,6 @@ set -x
 # Let the DB start
 poetry run python backend/config/backend_pre_start.py
 
-# Run migrations
-#alembic upgrade head
 
 # Create initial data in DB
 poetry run python backend/config/initial_data.py

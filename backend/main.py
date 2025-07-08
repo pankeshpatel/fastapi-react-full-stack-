@@ -1,13 +1,9 @@
 from fastapi import FastAPI, Request
-from config.config import settings
+from backend.config.config import settings
 from fastapi.middleware.cors import CORSMiddleware
-from middleware.logging import LoggingMiddleware
+from backend.middleware.logging import LoggingMiddleware
 import time
-from routers import health, items, login, users, utils, private
-
-from database.db import Base, engine
-
-Base.metadata.create_all(bind=engine)
+from backend.routers import items, login, users, utils, private
 
 
 app = FastAPI(
@@ -40,7 +36,6 @@ app.add_middleware(LoggingMiddleware)
 
 
 # routers
-app.include_router(health.router, prefix=settings.API_V1_STR)
 app.include_router(items.router, prefix=settings.API_V1_STR)
 app.include_router(login.router, prefix=settings.API_V1_STR)
 app.include_router(users.router, prefix=settings.API_V1_STR)
