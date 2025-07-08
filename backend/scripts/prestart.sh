@@ -4,8 +4,8 @@ set -e
 set -x
 
 # Let the DB start
-poetry run python backend/config/backend_pre_start.py
+poetry run python backend/utils/backend_pre_start.py
 
 
 # Create initial data in DB
-poetry run python backend/config/initial_data.py
+poetry run python backend/utils/initial_data.py

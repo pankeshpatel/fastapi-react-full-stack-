@@ -13,11 +13,6 @@ from backend.core.security import create_access_token
 router = APIRouter(tags=["login"])
 
 
-# @router.post("/login/access-token")
-# def login_access_token():
-#     return {"message": "login_access_token"}
-
-
 @router.post("/login/access-token", status_code=status.HTTP_201_CREATED)
 def login_access_token(
     session: SessionDep, form_data: Annotated[OAuth2PasswordRequestForm, Depends()]
