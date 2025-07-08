@@ -5,6 +5,10 @@ from middleware.logging import LoggingMiddleware
 import time
 from routers import health, items, login, users, utils, private
 
+from database.db import Base, engine
+
+Base.metadata.create_all(bind=engine)
+
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
