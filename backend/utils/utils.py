@@ -10,7 +10,6 @@ from jinja2 import Template
 from jwt.exceptions import InvalidTokenError
 
 from backend.config.config import settings
-from backend.core import security
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)

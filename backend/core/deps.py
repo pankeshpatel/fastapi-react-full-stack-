@@ -5,11 +5,10 @@ from backend.database.db import engine
 from fastapi import Depends
 from fastapi.security import OAuth2PasswordBearer
 from backend.config.config import settings
-from fastapi import Depends, HTTPException, status
+from fastapi import HTTPException, status
 from jwt.exceptions import InvalidTokenError
 from pydantic import ValidationError
 from backend.models.models import User, TokenPayload
-from backend.config.config import settings
 import jwt
 
 

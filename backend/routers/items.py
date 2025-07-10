@@ -8,14 +8,9 @@ from backend.models.models import (
     Message,
 )
 
-from fastapi import APIRouter, status, HTTPException
+from fastapi import HTTPException
 from typing import Any
 from backend.core.deps import SessionDep, CurrentUser
-from fastapi import Depends
-from backend.core.crud import authenticate
-from datetime import timedelta
-from backend.config.config import settings
-from backend.core.security import create_access_token
 from sqlmodel import func, select
 import uuid
 

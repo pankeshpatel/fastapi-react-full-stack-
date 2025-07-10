@@ -25,15 +25,13 @@
 
 
 import pytest
-from backend.models.models import UserCreate, User
 from backend.database.db import engine
-from backend.core.crud import create_user
 from sqlmodel import Session
-from backend.core.security import get_password_hash
 from backend.config.config import settings
 from fastapi.testclient import TestClient
 from backend.main import app
-import random, string
+import random
+import string
 
 client = TestClient(app)
 
@@ -56,10 +54,6 @@ def random_email() -> str:
 
 def random_lower_string() -> str:
     return "".join(random.choices(string.ascii_lowercase, k=32))
-
-
-def random_email() -> str:
-    return f"{random_lower_string()}@{random_lower_string()}.com"
 
 
 @pytest.fixture()

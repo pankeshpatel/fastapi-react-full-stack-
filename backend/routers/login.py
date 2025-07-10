@@ -1,15 +1,15 @@
 from fastapi import APIRouter, status, HTTPException
-from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
-from typing import Annotated, Any
-from backend.core.deps import SessionDep, CurrentUser
+from fastapi.security import OAuth2PasswordRequestForm
+from typing import Annotated
+from backend.core.deps import SessionDep
 from fastapi import Depends
-from backend.models.models import Token, UserPublic, NewPassword, Message
+from backend.models.models import Token, NewPassword, Message
 from backend.core.crud import authenticate
 from datetime import timedelta
 from backend.config.config import settings
 from backend.core.security import create_access_token, get_password_hash
 
-from backend.core.crud import get_user_by_email, get_user_by_id
+from backend.core.crud import get_user_by_id
 from backend.utils.utils import verify_password_reset_token
 
 

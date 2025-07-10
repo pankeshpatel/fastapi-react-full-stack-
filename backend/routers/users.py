@@ -1,5 +1,5 @@
-from fastapi import APIRouter, status, HTTPException
-from typing import Annotated, Any
+from fastapi import APIRouter, HTTPException
+from typing import Any
 from fastapi import Depends
 from backend.models.models import (
     UserPublic,
@@ -14,10 +14,9 @@ from backend.models.models import (
     Item,
 )
 from sqlmodel import select, func, delete, col
-from backend.core.crud import authenticate
-from backend.config.config import settings
 from backend.core.deps import get_current_active_superuser, SessionDep, CurrentUser
-from backend.utils.utils import *
+
+# from backend.utils.utils import *
 from backend.core import crud, security
 import uuid
 
