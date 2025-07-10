@@ -31,7 +31,7 @@ class Settings(BaseSettings):
     FIRST_SUPERUSER_PASSWORD: str
 
     SECRET_KEY: str
-    ALGORITHM: str
+    ALGORITHM: str = "HS256"
 
     # 60 minutes * 24 hours * 8 days = 8 days
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 8

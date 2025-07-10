@@ -40,8 +40,8 @@ client = TestClient(app)
 
 def get_user_token_headers():
     login_data = {
-        "username": "test1@example.com",
-        "password": "test1@example.com",
+        "username": "pankeshpatel@example.com",
+        "password": "pankesh@example.com",
     }
     r = client.post(f"{settings.API_V1_STR}/login/access-token", data=login_data)
     tokens = r.json()
@@ -50,9 +50,19 @@ def get_user_token_headers():
     return headers
 
 
+def random_email() -> str:
+    return f"{random_lower_string()}@{random_lower_string()}.com"
+
+
 def random_lower_string() -> str:
     return "".join(random.choices(string.ascii_lowercase, k=32))
 
 
 def random_email() -> str:
     return f"{random_lower_string()}@{random_lower_string()}.com"
+
+
+@pytest.fixture()
+def session() -> Session:
+    with Session(engine) as s:
+        yield s

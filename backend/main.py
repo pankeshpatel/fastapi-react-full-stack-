@@ -36,8 +36,8 @@ app.add_middleware(LoggingMiddleware)
 
 
 # routers
-app.include_router(items.router)
+app.include_router(items.router, prefix=settings.API_V1_STR)
 app.include_router(login.router, prefix=settings.API_V1_STR)
-app.include_router(users.router)
-app.include_router(private.router)
-app.include_router(health.router)
+app.include_router(users.router, prefix=settings.API_V1_STR)
+app.include_router(private.router, prefix=settings.API_V1_STR)
+app.include_router(health.router, prefix=settings.API_V1_STR)
