@@ -3,7 +3,7 @@ from backend.config.config import settings
 from fastapi.middleware.cors import CORSMiddleware
 from backend.middleware.logging import LoggingMiddleware
 import time
-from backend.routers import items, login, users, utils, private
+from backend.routers import items, login, users, private, health
 
 
 app = FastAPI(
@@ -36,8 +36,8 @@ app.add_middleware(LoggingMiddleware)
 
 
 # routers
-app.include_router(items.router, prefix=settings.API_V1_STR)
+app.include_router(items.router)
 app.include_router(login.router, prefix=settings.API_V1_STR)
-app.include_router(users.router, prefix=settings.API_V1_STR)
-app.include_router(utils.router, prefix=settings.API_V1_STR)
-app.include_router(private.router, prefix=settings.API_V1_STR)
+app.include_router(users.router)
+app.include_router(private.router)
+app.include_router(health.router)

@@ -3,17 +3,19 @@ from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from typing import Annotated, Any
 from backend.core.deps import SessionDep, CurrentUser
 from fastapi import Depends
-from backend.models.models import Token, UserPublic
+from backend.models.models import Token, UserPublic, NewPassword, Message
 from backend.core.crud import authenticate
 from datetime import timedelta
 from backend.config.config import settings
 from backend.core.security import create_access_token
 
+from backend.core.crud import get_user_by_email
+
 
 router = APIRouter(tags=["login"])
 
 
-@router.post("/login/access-token", status_code=status.HTTP_201_CREATED)
+@router.post("/login/access-token", status_code=status.HTTP_200_OK)
 def login_access_token(
     session: SessionDep, form_data: Annotated[OAuth2PasswordRequestForm, Depends()]
 ) -> Token:
@@ -50,8 +52,8 @@ def recover_password():
 
 
 @router.post("/reset-password/")
-def reset_password():
-    return {"message": "reset_password"}
+def reset_password() -> Message:
+    return {"message": "reset password"}
 
 
 @router.post("/password-recovery-html-content/{email}")
